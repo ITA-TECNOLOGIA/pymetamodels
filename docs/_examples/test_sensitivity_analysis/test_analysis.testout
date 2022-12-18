@@ -1,0 +1,105 @@
+Msg: Case case_1 sampling value 128 by Sobol method. DOEX shape (1536, 5)
+Msg: Case case_2 sampling value 128 by Morris method. DOEX shape (768, 5)
+Msg: Case case_3 sampling value 128 by latin Hypercube for RBD-FAST. DOEX shape (128, 5)
+Msg: Case case_4 sampling value 128 by latin Hypercube for FAST. DOEX shape (640, 5)
+Msg: Case case_5 sampling value 128 by latin Hypercube for Delta-MIM. DOEX shape (128, 5)
+Msg: Case case_6 sampling value 128 by DGSM. DOEX shape (768, 5)
+Msg: Case case_7 sampling value 128 by latin Hypercube for PAWN. DOEX shape (128, 5)
+*:-)* Printing data object structure for case case_1 sensitivity case Sobol
+*:-)* Printing data object structure for case case_2 sensitivity case Morris
+*:-)* Printing data object structure for case case_3 sensitivity case RBD-Fast
+*:-)* Printing data object structure for case case_4 sensitivity case Fast
+*:-)* Printing data object structure for case case_5 sensitivity case Delta-MIM
+*:-)* Printing data object structure for case case_6 sensitivity case DGSM
+*:-)* Printing data object structure for case case_7 sensitivity case PAWN
+Plot create ID: cross_X1_X2_case_1
+Plot create ID: cross_X1_X3_case_1
+Plot create ID: cross_X1_X4_case_1
+Plot create ID: cross_X1_X5_case_1
+Plot create ID: cross_X2_X3_case_1
+Plot create ID: cross_X2_X4_case_1
+Plot create ID: cross_X2_X5_case_1
+Plot create ID: cross_X3_X4_case_1
+Plot create ID: cross_X3_X5_case_1
+Plot create ID: cross_X4_X5_case_1
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\cross_sampling
+Plot create ID other: sensi_case_1_Y
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\hist_sensitivity
+Plot create ID: cross_X1_X2_case_2
+Plot create ID: cross_X1_X3_case_2
+Plot create ID: cross_X1_X4_case_2
+Plot create ID: cross_X1_X5_case_2
+Plot create ID: cross_X2_X3_case_2
+Plot create ID: cross_X2_X4_case_2
+Plot create ID: cross_X2_X5_case_2
+Plot create ID: cross_X3_X4_case_2
+Plot create ID: cross_X3_X5_case_2
+Plot create ID: cross_X4_X5_case_2
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\cross_sampling
+Plot create ID other: sensi_case_2_Y
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\hist_sensitivity
+Plot create ID: cross_X1_X2_case_3
+Plot create ID: cross_X1_X3_case_3
+Plot create ID: cross_X1_X4_case_3
+Plot create ID: cross_X1_X5_case_3
+Plot create ID: cross_X2_X3_case_3
+Plot create ID: cross_X2_X4_case_3
+Plot create ID: cross_X2_X5_case_3
+Plot create ID: cross_X3_X4_case_3
+Plot create ID: cross_X3_X5_case_3
+Plot create ID: cross_X4_X5_case_3
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\cross_sampling
+Plot create ID other: sensi_case_3_Y
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\hist_sensitivity
+Plot create ID: cross_X1_X2_case_4
+Plot create ID: cross_X1_X3_case_4
+Plot create ID: cross_X1_X4_case_4
+Plot create ID: cross_X1_X5_case_4
+Plot create ID: cross_X2_X3_case_4
+Plot create ID: cross_X2_X4_case_4
+Plot create ID: cross_X2_X5_case_4
+Plot create ID: cross_X3_X4_case_4
+Plot create ID: cross_X3_X5_case_4
+Plot create ID: cross_X4_X5_case_4
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\cross_sampling
+Plot create ID other: sensi_case_4_Y
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\hist_sensitivity
+Plot create ID: cross_X1_X2_case_5
+Plot create ID: cross_X1_X3_case_5
+Plot create ID: cross_X1_X4_case_5
+Plot create ID: cross_X1_X5_case_5
+Plot create ID: cross_X2_X3_case_5
+Plot create ID: cross_X2_X4_case_5
+Plot create ID: cross_X2_X5_case_5
+Plot create ID: cross_X3_X4_case_5
+Plot create ID: cross_X3_X5_case_5
+Plot create ID: cross_X4_X5_case_5
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\cross_sampling
+Plot create ID other: sensi_case_5_Y
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\hist_sensitivity
+Plot create ID: cross_X1_X2_case_6
+Plot create ID: cross_X1_X3_case_6
+Plot create ID: cross_X1_X4_case_6
+Plot create ID: cross_X1_X5_case_6
+Plot create ID: cross_X2_X3_case_6
+Plot create ID: cross_X2_X4_case_6
+Plot create ID: cross_X2_X5_case_6
+Plot create ID: cross_X3_X4_case_6
+Plot create ID: cross_X3_X5_case_6
+Plot create ID: cross_X4_X5_case_6
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\cross_sampling
+Plot create ID other: sensi_case_6_Y
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\hist_sensitivity
+Plot create ID: cross_X1_X2_case_7
+Plot create ID: cross_X1_X3_case_7
+Plot create ID: cross_X1_X4_case_7
+Plot create ID: cross_X1_X5_case_7
+Plot create ID: cross_X2_X3_case_7
+Plot create ID: cross_X2_X4_case_7
+Plot create ID: cross_X2_X5_case_7
+Plot create ID: cross_X3_X4_case_7
+Plot create ID: cross_X3_X5_case_7
+Plot create ID: cross_X4_X5_case_7
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\cross_sampling
+Plot create ID other: sensi_case_7_Y
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\test_sensitivity_analysis\..\_examples_raw\test_sensitivity_analysis_out\hist_sensitivity

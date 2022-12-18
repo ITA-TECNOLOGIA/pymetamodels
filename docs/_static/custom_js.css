@@ -1,0 +1,8 @@
+
+.wy-table-responsive {
+    margin-bottom: 0px;
+    max-width: 100%;
+    overflow: auto;
+    overflow-x: auto;
+    overflow-y: auto;
+}

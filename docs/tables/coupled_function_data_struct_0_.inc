@@ -1,0 +1,84 @@
+
+.. _coupled_function_data_struct_0_-ach:
+
+.. tabularcolumns:: | C | C | C | C | C | C | C | C | C | C | C | C |
+.. list-table:: Main case input model variables description for the coupled function tutorial data structure
+    :name: coupled_function_data_struct_0_
+    :header-rows: 1
+    :widths: auto
+    :align: center
+    :width: 100%
+    :class: right-align-right-col align-cols left-align-left-col parse-table
+    
+    * - variable
+      - value
+      - min
+      - max
+      - distribution
+      - is_range
+      - cov_un
+      - ud
+      - alias
+      - comment
+      - constrain
+      - comment
+    * - X1
+      - 1.0
+      - -3.14
+      - 3.14
+      - unif
+      - 1
+      - 0.05
+      - [-]
+      - X1
+      - None
+      - 0
+      - var X1
+    * - X2
+      - 1.0
+      - -3.14
+      - 3.14
+      - unif
+      - 1
+      - 0.05
+      - [-]
+      - X2
+      - None
+      - 0
+      - var X2
+    * - X3
+      - 1.0
+      - -3.14
+      - 3.14
+      - unif
+      - 1
+      - 0.05
+      - [-]
+      - X3
+      - None
+      - 0
+      - var X3
+    * - X4
+      - 1.0
+      - -3.14
+      - 3.14
+      - unif
+      - 1
+      - 0.05
+      - [-]
+      - X4
+      - None
+      - 0
+      - var X4
+    * - X5
+      - 1.0
+      - -3.14
+      - 3.14
+      - unif
+      - 1
+      - 0.05
+      - [-]
+      - X5
+      - None
+      - 0
+      - var X5

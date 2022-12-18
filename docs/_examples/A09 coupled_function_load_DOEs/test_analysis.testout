@@ -1,0 +1,89 @@
+Msg: Case case_1 sampling value 1024 by DGSM. DOEX shape (6144, 5)
+Msg: Case case_2 sampling value 256 by DGSM. DOEX shape (1536, 5)
+Msg: GaussianProcessRegressor R2 coefficient of determination 1.000, score 1.000. With fit intercept True selected. DOEX & DOEY shape (3993, 5) & (3993,).Time elapsed 8.62 [s] (total 19.67 [s])
+Msg: Min var: ['Y'].Best opt method: Nelder-Mead. Min: -11.7347 Time elapsed 52.11 [s]. Result: [ 3.14       -3.14       -1.55487022 -1.98412898 -1.74413051]
+Msg: DoeY: [-11.73467012]
+Msg: MultiGaussianProcessRegressor R2 coefficient of determination 1.000, score 1.000. With fit intercept True selected. DOEX & DOEY shape (998, 5) & (998, 2).Time elapsed 0.34 [s] (total 1.66 [s])
+Msg: Min var: ['Y'].Best opt method: Nelder-Mead. Min: -10.6456 Time elapsed 9.06 [s]. Result: [ 2.67934177 -3.14       -1.52373167 -0.63505971 -0.57917582]
+Msg: DoeY: [[-10.6455835  -15.96837525]]
+Plot create ID: cross_X1_X2_case_1
+Plot create ID: cross_X1_X3_case_1
+Plot create ID: cross_X1_X4_case_1
+Plot create ID: cross_X1_X5_case_1
+Plot create ID: cross_X2_X3_case_1
+Plot create ID: cross_X2_X4_case_1
+Plot create ID: cross_X2_X5_case_1
+Plot create ID: cross_X3_X4_case_1
+Plot create ID: cross_X3_X5_case_1
+Plot create ID: cross_X4_X5_case_1
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A09 coupled_function_load_DOEs\..\_examples_raw\coupled_function_load_DOEs_out\cross_sampling
+Plot create ID other: sensi_case_1_Y
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A09 coupled_function_load_DOEs\..\_examples_raw\coupled_function_load_DOEs_out\hist_sensitivity
+Plot create ID: XYplt_case_1_X1_Y
+Plot create ID: XYplt_case_1_X2_Y
+Plot create ID: XYplt_case_1_X3_Y
+Plot create ID: XYplt_case_1_X4_Y
+Plot create ID: XYplt_case_1_X5_Y
+Msg: XY 2D scatter plots of the DOEY variables versus DOEX variables plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A09 coupled_function_load_DOEs\..\_examples_raw\coupled_function_load_DOEs_out\XY_model_plot
+Plot create ID: XYplt_residuals_case_1_Y
+Msg: XY 2D scatter plots of the residual values in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A09 coupled_function_load_DOEs\..\_examples_raw\coupled_function_load_DOEs_out\XY_model_plot_residuals
+Plot create ID other: XYZplt_case_1_Y_X1_X2
+Plot create ID other: XYZplt_case_1_Y_X1_X3
+Plot create ID other: XYZplt_case_1_Y_X1_X4
+Plot create ID other: XYZplt_case_1_Y_X1_X5
+Plot create ID other: XYZplt_case_1_Y_X2_X3
+Plot create ID other: XYZplt_case_1_Y_X2_X4
+Plot create ID other: XYZplt_case_1_Y_X2_X5
+Plot create ID other: XYZplt_case_1_Y_X3_X4
+Plot create ID other: XYZplt_case_1_Y_X3_X5
+Plot create ID other: XYZplt_case_1_Y_X4_X5
+Msg: XYZ 3D scatter plots of the DOEY variables versus DOEX variables in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A09 coupled_function_load_DOEs\..\_examples_raw\coupled_function_load_DOEs_out\XYZ_model_plot
+Plot create ID: cross_X1_X2_case_2
+Plot create ID: cross_X1_X3_case_2
+Plot create ID: cross_X1_X4_case_2
+Plot create ID: cross_X1_X5_case_2
+Plot create ID: cross_X2_X3_case_2
+Plot create ID: cross_X2_X4_case_2
+Plot create ID: cross_X2_X5_case_2
+Plot create ID: cross_X3_X4_case_2
+Plot create ID: cross_X3_X5_case_2
+Plot create ID: cross_X4_X5_case_2
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A09 coupled_function_load_DOEs\..\_examples_raw\coupled_function_load_DOEs_out\cross_sampling
+Plot create ID other: sensi_case_2_Y
+Plot create ID other: sensi_case_2_Y2
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A09 coupled_function_load_DOEs\..\_examples_raw\coupled_function_load_DOEs_out\hist_sensitivity
+Plot create ID: XYplt_case_2_X1_Y
+Plot create ID: XYplt_case_2_X2_Y
+Plot create ID: XYplt_case_2_X3_Y
+Plot create ID: XYplt_case_2_X4_Y
+Plot create ID: XYplt_case_2_X5_Y
+Plot create ID: XYplt_case_2_X1_Y2
+Plot create ID: XYplt_case_2_X2_Y2
+Plot create ID: XYplt_case_2_X3_Y2
+Plot create ID: XYplt_case_2_X4_Y2
+Plot create ID: XYplt_case_2_X5_Y2
+Msg: XY 2D scatter plots of the DOEY variables versus DOEX variables plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A09 coupled_function_load_DOEs\..\_examples_raw\coupled_function_load_DOEs_out\XY_model_plot
+Plot create ID: XYplt_residuals_case_2_Y
+Plot create ID: XYplt_residuals_case_2_Y2
+Msg: XY 2D scatter plots of the residual values in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A09 coupled_function_load_DOEs\..\_examples_raw\coupled_function_load_DOEs_out\XY_model_plot_residuals
+Plot create ID other: XYZplt_case_2_Y_X1_X2
+Plot create ID other: XYZplt_case_2_Y_X1_X3
+Plot create ID other: XYZplt_case_2_Y_X1_X4
+Plot create ID other: XYZplt_case_2_Y_X1_X5
+Plot create ID other: XYZplt_case_2_Y_X2_X3
+Plot create ID other: XYZplt_case_2_Y_X2_X4
+Plot create ID other: XYZplt_case_2_Y_X2_X5
+Plot create ID other: XYZplt_case_2_Y_X3_X4
+Plot create ID other: XYZplt_case_2_Y_X3_X5
+Plot create ID other: XYZplt_case_2_Y_X4_X5
+Plot create ID other: XYZplt_case_2_Y2_X1_X2
+Plot create ID other: XYZplt_case_2_Y2_X1_X3
+Plot create ID other: XYZplt_case_2_Y2_X1_X4
+Plot create ID other: XYZplt_case_2_Y2_X1_X5
+Plot create ID other: XYZplt_case_2_Y2_X2_X3
+Plot create ID other: XYZplt_case_2_Y2_X2_X4
+Plot create ID other: XYZplt_case_2_Y2_X2_X5
+Plot create ID other: XYZplt_case_2_Y2_X3_X4
+Plot create ID other: XYZplt_case_2_Y2_X3_X5
+Plot create ID other: XYZplt_case_2_Y2_X4_X5
+Msg: XYZ 3D scatter plots of the DOEY variables versus DOEX variables in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A09 coupled_function_load_DOEs\..\_examples_raw\coupled_function_load_DOEs_out\XYZ_model_plot

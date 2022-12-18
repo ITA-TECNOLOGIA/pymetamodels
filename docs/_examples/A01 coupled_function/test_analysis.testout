@@ -1,0 +1,28 @@
+Msg: Case case_0 sampling value 64 by DGSM. DOEX shape (384, 5)
+Msg: Case case_1 sampling value 64 by latin Hypercube for RBD-FAST. DOEX shape (64, 5)
+Plot create ID: cross_X1_X2_case_0
+Plot create ID: cross_X1_X3_case_0
+Plot create ID: cross_X1_X4_case_0
+Plot create ID: cross_X1_X5_case_0
+Plot create ID: cross_X2_X3_case_0
+Plot create ID: cross_X2_X4_case_0
+Plot create ID: cross_X2_X5_case_0
+Plot create ID: cross_X3_X4_case_0
+Plot create ID: cross_X3_X5_case_0
+Plot create ID: cross_X4_X5_case_0
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A01 coupled_function\..\_examples_raw\coupled_function_out\cross_sampling
+Plot create ID other: sensi_case_0_Y
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A01 coupled_function\..\_examples_raw\coupled_function_out\hist_sensitivity
+Plot create ID: cross_X1_X2_case_1
+Plot create ID: cross_X1_X3_case_1
+Plot create ID: cross_X1_X4_case_1
+Plot create ID: cross_X1_X5_case_1
+Plot create ID: cross_X2_X3_case_1
+Plot create ID: cross_X2_X4_case_1
+Plot create ID: cross_X2_X5_case_1
+Plot create ID: cross_X3_X4_case_1
+Plot create ID: cross_X3_X5_case_1
+Plot create ID: cross_X4_X5_case_1
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A01 coupled_function\..\_examples_raw\coupled_function_out\cross_sampling
+Plot create ID other: sensi_case_1_Y
+Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A01 coupled_function\..\_examples_raw\coupled_function_out\hist_sensitivity
