@@ -2,3 +2,4 @@
 # It is possible to specify requirements as plain names.
 xlrd
 myst-parser
+sphinxcontrib-bibtex
