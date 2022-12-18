@@ -132,7 +132,7 @@ class conf_lib(object):
             shutil.copy(bib_src_file, bib_dst_file)
             return [bib_name_file]
         else:
-            return []
+            return [bib_name_file]
 
     def parse_tables_files(self, path_xls, sheet, tables_dir, data_dir):
 

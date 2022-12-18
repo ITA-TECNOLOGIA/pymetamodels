@@ -3,7 +3,7 @@ Pymetamodels package for materials, systems and component metamodeling
 
 The pymetamodels package combines machine learning (ML) metamodeling and analysis tools for the virtual development of modeling systems within a common abstract framework implemented in an accessible and distributable Python package. The development of pymetamodels package is oriented to support ML applications in  material science, material informatics and the construction of materials, components and systems soft metamodels informed by hard physics-based modelling (continuum, mesosocopic, ... ) and experimental characterisations.
 
-Basic turtorials and advanced examples can be found in the tutorials section [pymetamodels.readthedocs.io](https://pymetamodels.readthedocs.io).
+Basic turtorials and advanced examples can be found in the tutorials section [pymetamodels.readthedocs.io](https://pymetamodels.readthedocs.io/en/latest/).
 
 The package has been build in [ITAINNOVA](https://www.itainnova.es/es). And is distributed with permissive MIT license.
 
@@ -16,7 +16,7 @@ To install the latest stable version of pymetamodels via pip from [PyPI](https:/
     pip install pymetamodels
 ```
 
-First steps, basic turtorials an advanced examples can be found in the documentation tutorials section [pymetamodels.readthedocs.io](https://pymetamodels.readthedocs.io). To load and test installation try,
+First steps, basic turtorials an advanced examples can be found in the documentation tutorials section [pymetamodels.readthedocs.io](https://pymetamodels.readthedocs.io/en/latest/). To load and test installation try,
 
 ```
     import pymetamodels

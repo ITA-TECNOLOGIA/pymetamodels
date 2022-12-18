@@ -95,7 +95,7 @@ bibtex_default_style = 'unsrtalpha' #unsrt, plain, srt, unsrtalpha
 
 bib_name_file = "001 DataScience.bib"
 if on_rtd:
-    pass
+    bibtex_bibfiles += [bib_name_file]
 else:
     bib_folder = os.path.join(r"C:\Users\flahuerta\Documents\Mendely_Bibtex")
     bibtex_bibfiles += clib.add_bibligraphy_Mend(bib_name_file, bib_folder, current_directory)
