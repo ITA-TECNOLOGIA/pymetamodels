@@ -57,7 +57,7 @@ language = "en" #"es"
 def setup(app):
     app.add_config_value('releaselevel', 'internal', 'external')
 
-release = clib.theme_version(0,0,2)
+release = clib.theme_version(0,0,1)
 releaselevel = "internal"
 
 # source link

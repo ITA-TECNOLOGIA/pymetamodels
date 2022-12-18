@@ -3,5 +3,5 @@
 
 from pymetamodels.pymeta_models import metamodel, load, newconf
 
-__version__ = "0.0.2"
+__version__ = "0.0.1"
 
