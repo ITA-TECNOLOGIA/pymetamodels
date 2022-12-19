@@ -206,7 +206,6 @@ class _cls_2D_contour(object):
             self.savefig(route)
 
         plt.ion()
-        #print "Saving plot: " + 'plot_alot_' + self.ID
 
         return 'xplot_alot_' + self.ID
 

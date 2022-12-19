@@ -786,7 +786,6 @@ class _xplot(object):
                 plt.rcParams['savefig.dpi'] = _was_dpi
 
             plt.ion()
-            #print "Saving plot: " + 'plot_alot_' + self.ID
 
             return 'xplot_alot_' + self.ID
 

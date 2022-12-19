@@ -237,7 +237,6 @@ class _cls_3D_plot(object):
             self.savefig(route)
 
         plt.ion()
-        #print "Saving plot: " + 'plot_alot_' + self.ID
 
         return 'xplot_alot_' + self.ID
 
