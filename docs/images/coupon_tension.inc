@@ -2,7 +2,7 @@
 
 .. _coupon_tension-ach:
     
-    .. figure:: ./images/coupon_tension.PNG
+    .. figure:: ./images/coupon_tension.png
         :alt: parse-figure
         :name: coupon_tension
         :align: center

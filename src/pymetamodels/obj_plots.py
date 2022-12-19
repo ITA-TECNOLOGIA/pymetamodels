@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import os,sys
-import pymetamodels.clsplots.clsxplots as xplots
+import pymetamodels.clsxplots.clsxplots as xplots
 import gc
 
 class objplots(object):

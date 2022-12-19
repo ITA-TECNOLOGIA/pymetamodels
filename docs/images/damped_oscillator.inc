@@ -2,7 +2,7 @@
 
 .. _damped_oscillator-ach:
     
-    .. figure:: ./images/damped_oscillator.PNG
+    .. figure:: ./images/damped_oscillator.png
         :alt: parse-figure
         :name: damped_oscillator
         :align: center

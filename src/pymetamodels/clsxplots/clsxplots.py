@@ -21,9 +21,9 @@ from PIL import Image
 
 import pickle
 
-import pymetamodels.clsplots.cls_bars as clsbars
-import pymetamodels.clsplots.cls_2D_contour as cls_2D_contour
-import pymetamodels.clsplots.cls_3D_plot as cls_3D_plot
+import pymetamodels.clsxplots.cls_bars as clsbars
+import pymetamodels.clsxplots.cls_2D_contour as cls_2D_contour
+import pymetamodels.clsxplots.cls_3D_plot as cls_3D_plot
 
 class xplot(object):
 
