@@ -13,6 +13,8 @@ from matplotlib import ticker
 
 import pickle
 
+from pymetamodels.clsxplots.obj_func import test_empty
+
 class _cls_bars(object):
 
     def __init__(self, ID, type_plot, parent, output_folder):
@@ -41,9 +43,11 @@ class _cls_bars(object):
         config["name_label"]= legend
         config["annotate_serie"]= annotate_serie
         config["separation_annotate"]= float(separation_annotate)
-        if x_axis != []: config["x_axis"] = np.asarray(x_axis)
-        if y != []: config["y_axis"] = np.asarray(y, dtype = float)
-        if y_std != []: config["y_std"]= np.asarray(y_std, dtype = float)
+        
+        if test_empty(x_axis): config["x_axis"] = np.asarray(x_axis)
+        if test_empty(y): config["y_axis"] = np.asarray(y, dtype = float)
+        if test_empty(y_std): config["y_std"]= np.asarray(y_std, dtype = float)
+
         config["y_opposite"]= y_opposite
         if color != "": config["color"] = color
 
@@ -82,7 +86,7 @@ class _cls_bars(object):
                 plt.rcParams['figure.subplot.top'] = '0.95'
                 plt.rcParams['figure.subplot.bottom'] = '0.12'
             fig = plt.figure(figsize = [8.3,5.85])  #size in inches
-            plot1 = self.append_axes(cols = 1, rows = 1, wspace = 0.2, hspace = 0.05)
+            plot1 = self.append_axes(cols = 1, rows = 1, wspace = 0.2, hspace = 0.05) 
         else:
             plt.rcParams['figure.subplot.left'] = '0.15'
             plt.rcParams['figure.subplot.right'] = '0.95'
@@ -221,8 +225,11 @@ class _cls_bars(object):
                             arrowprops=dict(arrowstyle=_head,linewidth=_width))
 
         ### draw
+        #fig.tight_layout() ## Matplotlib version change for >=3.8.0 bbox_inches='tight' in savefig
+
         route = r'xplot_barplot_' + str(self.ID).replace(" ", "_") + '.jpg'
         self.savefig(route)
+
         if self.parent._eps or run_eps:
             route = r'xplot_barplot_' + str(self.ID).replace(" ", "_") + '.eps'
             self.savefig(route)
@@ -249,9 +256,14 @@ class _cls_bars(object):
                      style=self.parent._logo_style, weight='bold', size='small',
                      color=self.parent._logo_color, horizontalalignment='right',
                      transform = plt.gca().transAxes)
-        plt.savefig(route)
+        
+        plt.savefig(route, bbox_inches='tight')
+        
         if not self.parent._no_logo:
-            del(plt.gca().texts[-1])
+            try:
+                del(plt.gca().texts[-1])
+            except:
+                pass
 
         plt.ion()
 
@@ -283,7 +295,7 @@ class _cls_bars(object):
         lefts = [(rcleft + i * (width + wspace)) for i in range(cols)]
 
         #return a list of axes instances
-        return [plt.axes([lefts[j],bottoms[i], width, height]) for i in range(rows-1,-1,-1) for j in range(cols) ]
+        return [plt.axes([lefts[j],bottoms[i], width, height], visible = False) for i in range(rows-1,-1,-1) for j in range(cols) ] ## error on Matplotlib verion >=3.8.0 visible=False
 
     def get_ax_size(self, _ax, _fig, inDPI = False):
         bbox = _ax.get_window_extent().transformed(_fig.dpi_scale_trans.inverted())

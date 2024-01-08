@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 import os,sys
-import xlwt
+import xlwt, xlrd
+from xlutils.copy import copy as xlutils_copy
 import pymetamodels.obj_data as obj_data
 
 class objconf(object):
@@ -219,7 +220,7 @@ class objconf(object):
         if variable not in self.vars_sheet_keys:
             self.vars_sheet_keys.append(variable)      
 
-    def add_output_sheet(self, output_sheet, variable, value, ud, array, op_min, op_min_0, ineq_0, eq_0, comment = None, others = {}, force_overwrite = False):
+    def add_output_sheet(self, output_sheet, variable, value, ud, array, op_min, op_min_0, ineq_0, eq_0, alias, comment = None, others = {}, force_overwrite = False):
 
         """
 
@@ -238,6 +239,7 @@ class objconf(object):
             * op_min_0: TRUE if variable is to be optimize to 0, :math:`objective(DOEY_{var}=0)`
             * ineq_0: TRUE if variables is consider for an inequality constrain, :math:`DOEY_{var}>=0`
             * eq_0: TRUE if variables is consider for an equality constrain =0, :math:`DOEY_{var}=0`
+            * alias: alias name for the variable
 
         **Optional parameters:**
             * comment = None: comment for the given case
@@ -269,11 +271,13 @@ class objconf(object):
             self._add_output_sheet(output_sheet, variable, self.model.variable, variable)
             self._add_output_sheet(output_sheet, variable, self.model.value, value)
             self._add_output_sheet(output_sheet, variable, self.model.ud, ud)
+            self._add_output_sheet(output_sheet, variable, self.model.ud, ud)
             self._add_output_sheet(output_sheet, variable, self.model.as_array, array)
             self._add_output_sheet(output_sheet, variable, self.model.op_min, op_min)
             self._add_output_sheet(output_sheet, variable, self.model.op_min_eq, op_min_0)
             self._add_output_sheet(output_sheet, variable, self.model.op_ineq, ineq_0)
             self._add_output_sheet(output_sheet, variable, self.model.op_eq, eq_0)
+            self._add_output_sheet(output_sheet, variable, self.model.alias, alias)
                         
             self._add_output_sheet(output_sheet, variable, self.model.comment, comment)
 
@@ -417,7 +421,194 @@ class objconf(object):
                 ii = ii + 1   
         
         return True
+    
+    #### I/O data
+    #####################################    
+
+    def read_xls_sheet_to_dict(self, folder_path, file_name, sheet_name, col_start = 0, row_title = 0, units = False):
+
+        """
+
+        .. __read_xls_sheet_to_dict:
+
+        **Synopsis:**
+            * Load excel sheet (in .xls format) into a dictionary of arrays
+            * The format is each column is a data channel or array of data
+            * First row is the channel names
+            * Second row is the units names
+
+        **Args:**
+            * folder_path: the folder path name
+            * file_name: file name of the coupons file (type xls)
+            * sheet_name: sheet name with the channel list or array of data
+
+        **Optional parameters:**
+            * col_start = 0: first column
+            * row_title = 0: first row
+            * units = False: does the sheet con tain a second row of units
+
+        **Returns:**
+            * (dct, dct_units): (dictionary, dictionary of units)
+
+        .. note::
+
+            * None
+
+        |
+
+        """         
+
+        file_path = os.path.join(folder_path, file_name + '.xls')  
+
+        wk = xlrd.open_workbook(file_path)      
         
+        worksheet = wk.sheet_by_name(sheet_name)        
+
+        dct = {}
+        dct_units = {}
+
+        for col in range(col_start, worksheet.ncols):
+        
+            title = worksheet.cell_value(row_title,col)
+            
+            if title.strip() == "": break
+            
+            if units:
+                start = row_title + 2
+                    
+                val = worksheet.cell_value(row_title + 1,col)
+                    
+                dct_units[title] = val                  
+                
+            else:
+                start = row_title + 1
+            
+            arr = []
+            for row in range(start, worksheet.nrows):
+                
+                val = worksheet.cell_value(row,col)
+                
+                if str(val).strip() == "": break
+                
+                arr.append(val)
+                
+            dct[title] = arr          
+
+        return dct, dct_units
+
+    def save_dict_to_xls_sheet(self, folder_path, file_name, sheet_name, data_dict, col_start = 0, row_title = 0, dict_units = None, add_row_under_units = None, overwrite = True):
+
+        """
+
+        .. __save_dict_to_xls_sheet:
+
+        **Synopsis:**
+            * Save a dictionary of arrays (see :ref:`read_xls_sheet_to_dict() <read_xls_sheet_to_dict>`) into a excel sheet (in .xls format) 
+            * The format is each column is a data channel or array of data
+            * First row is the channel names
+            * Second row is the units names
+
+        **Args:**
+            * folder_path: the folder path name
+            * file_name: file name of the coupons file (type xls)
+            * sheet_name: sheet name with the channel list or array of data
+            * data_dict: dictionary of units per channel
+
+        **Optional parameters:**
+            * col_start = 0: first column
+            * row_title = 0: first row
+            * dict_units = None: 
+            * add_row_under_units = None: value of a third row under the units
+            * overwrite = True: overwrites the file creating a new one with the same name or updates the file if it exists
+
+        **Returns:**
+            * None
+
+        .. note::
+
+            * None
+
+        |
+
+        """ 
+
+        file_path = os.path.join(folder_path, file_name + '.xls')
+
+        if overwrite:
+            wb = xlwt.Workbook() # create empty workbook object 
+        else:
+            if os.path.exists(file_path):
+                rb = xlrd.open_workbook(file_path, formatting_info=True)
+                wb = xlutils_copy(rb)
+            else:
+                wb = xlwt.Workbook() # create empty workbook object      
+
+        ## Styles
+        style_title = xlwt.XFStyle()
+        pattern = xlwt.Pattern()
+        pattern.pattern = xlwt.Pattern.SOLID_PATTERN
+        pattern.pattern_fore_colour = xlwt.Style.colour_map['yellow']
+        style_title.pattern = pattern
+        style_title.font.colour_index = xlwt.Style.colour_map['indigo']
+        style_title.font.name = "Calibri"
+        style_title.font.height = 11*20 # 11 * 20, for 11 point
+        style_title.alignment.horz = xlwt.Alignment().HORZ_CENTER
+        
+        style_rows = xlwt.XFStyle()
+        style_rows.font.colour_index = xlwt.Style.colour_map['black']
+        style_rows.font.name = "Calibri"
+        style_rows.font.height = 11*20 # 11 * 20, for 11 point        
+        style_rows.alignment.horz = xlwt.Alignment().HORZ_CENTER           
+
+        ## addd sheets
+        
+        try:
+            sheet = wb.get_sheet(sheet_name)
+        except:
+            sheet = wb.add_sheet(sheet_name)
+
+        # add titles
+        ii = row_title
+        start = row_title + 1
+        jj = col_start
+        for key in data_dict.keys():
+
+            sheet.write(ii,jj, key, style_title)
+            jj = jj + 1
+
+        ## add units
+        if type(dict_units) == type({}):
+
+            ii = row_title + 1
+            start = ii + 1
+            jj = col_start
+            for key in dict_units.keys():
+
+                sheet.write(ii,jj, dict_units[key], style_title)
+                jj = jj + 1
+
+        if add_row_under_units:
+
+            ii = row_title + 2
+            start = ii + 1
+            jj = col_start
+            for key in dict_units.keys():
+
+                sheet.write(ii,jj, add_row_under_units, style_title)
+                jj = jj + 1            
+
+        # add values
+        jj = col_start
+        for key, value in data_dict.items():
+
+            for ii in range(0, len(value)):
+
+                sheet.write(start+ii, jj, value[ii], style_rows)
+
+            jj = jj + 1            
+
+        wb.save(file_path)
+
     #### Other functions
     #####################################
 

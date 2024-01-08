@@ -25,6 +25,8 @@ import pymetamodels.clsxplots.cls_bars as clsbars
 import pymetamodels.clsxplots.cls_2D_contour as cls_2D_contour
 import pymetamodels.clsxplots.cls_3D_plot as cls_3D_plot
 
+from pymetamodels.clsxplots.obj_func import test_empty
+
 class xplot(object):
 
     """
@@ -786,7 +788,7 @@ class _xplot(object):
                 plt.rcParams['savefig.dpi'] = _was_dpi
 
             plt.ion()
-
+            
             return 'xplot_alot_' + self.ID
 
         else:
@@ -857,8 +859,11 @@ class _xplot(object):
         else:
             plt.savefig(route)
         if not self.parent._no_logo:
-            del(plt.gca().texts[-1])
-
+            try:
+                del(plt.gca().texts[-1])
+            except:
+                pass
+                
         plt.ion()
 
     def close_fig(self):
@@ -894,7 +899,7 @@ class _xplot(object):
         lefts = [(rcleft + i * (width + wspace)) for i in range(cols)]
 
         #return a list of axes instances
-        return [plt.axes([lefts[j],bottoms[i], width, height]) for i in range(rows-1,-1,-1) for j in range(cols) ]
+        return [plt.axes([lefts[j],bottoms[i], width, height], visible = False) for i in range(rows-1,-1,-1) for j in range(cols) ] ## error on Matplotlib verion >=3.8.0 visible=False
 
     def no_nan(self, array1, array2):
         ### clean arrays

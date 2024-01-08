@@ -57,7 +57,7 @@ First steps, basic turtorials an advanced examples can be found in the :ref:`tut
 Installing pre-requisite software
 =================================
 
-Pymetamodels requires Python >3.8 or an above of release `Python.org <https://www.python.org/>`_.
+Pymetamodels requires Python >3.7 or an above of release `Python.org <https://www.python.org/>`_.
 
 Pymetamodels requires `NumPy <http://www.numpy.org/>`_, `SciPy <http://www.scipy.org/>`_, `sklean <https://scikit-learn.org/>`_, `matplotlib <http://matplotlib.org/>`_ and `SALib <https://salib.readthedocs.io/>`_ installed on your computer.  Using `pip <https://pip.pypa.io/en/stable/installing/>`_, these libraries can be installed with the following command:
 

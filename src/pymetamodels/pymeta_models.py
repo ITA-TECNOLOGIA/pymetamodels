@@ -474,7 +474,7 @@ class metamodel(object):
     #### Metamodel construction
     #####################################
 
-    def run_metamodel_construction(self, case, scheme = None):
+    def run_metamodel_construction(self, case, scheme = None, with_test = True):
 
         """
 
@@ -488,6 +488,7 @@ class metamodel(object):
 
         **Optional parameters:**
             * scheme=None: designate the type of metamodel search scheme that will be carried out to find the most optimal ML metamolde. The available schemes are: None, general, general_fast, general_fast_nonpol, linear, gaussian, polynomial (see :numref:`pymetamodels_conf_metamodel`)
+            * with_test = True: use doeX_test and doeY_test as test data, if not available split the train data into split and train data (by 0.35)
 
         **Returns:**
             * None
@@ -504,7 +505,7 @@ class metamodel(object):
 
         ## metamodelling regression routine
 
-        self.add_metamodel_data(case, scheme = scheme)
+        self.add_metamodel_data(case, scheme = scheme, with_test = with_test)
 
     def obj_metamodel(self, case):
 
@@ -626,7 +627,7 @@ class metamodel(object):
         else:
             return False
 
-    def add_metamodel_data(self, case, scheme = None):
+    def add_metamodel_data(self, case, scheme = None, with_test = True):
 
         ## Add metamodelling regression routine
 
@@ -641,7 +642,7 @@ class metamodel(object):
 
         doeX_train, var_keysX = self.doeX_asnp(case, return_keysX = True)
 
-        obj.fit_model(doeX_train, doeY_train, var_keysX, var_keysY, doeX_test = None, doeY_test = None, scheme = scheme, with_test = True)
+        obj.fit_model(doeX_train, doeY_train, var_keysX, var_keysY, doeX_test = None, doeY_test = None, scheme = scheme, with_test = with_test)
 
         self.case[case][self.objmetamodel] = obj
 
@@ -697,7 +698,8 @@ class metamodel(object):
         ii = 0
         for key in keysX:
             if n_features == 1:
-                arr[:] = doeX[key][:]
+                #arr[:] = doeX[key][:]
+                arr[:,ii] = doeX[key][:]
             else:
                 arr[:,ii] = doeX[key][:]
 
@@ -1189,7 +1191,7 @@ class metamodel(object):
 
         ### Returns vals parameters output as dictionary
 
-        return self.case[case][self.vars_out_key][self.op_key+var_name]
+        return self.case[case][self.vars_out_key][self.op_key+var_name]     
 
     def doeX(self, case):
 
@@ -1319,12 +1321,12 @@ class metamodel(object):
 
         out = str(var_name)
 
-        lst_chr = ["\\","/"]
+        lst_chr = ["/"]
 
         for tx in lst_chr:
 
             out = out.replace(tx,"")
-
+        
         return out
 
     #### Reading / output formats
@@ -2165,9 +2167,36 @@ class metamodel(object):
         filess.close()
 
     #### Plots
-    #####################################
+    #####################################    
 
-    def output_plts_sensitivity(self, folder_path, case):
+    def var_name_txt(self, case, var_name, use_alias_as_vars = False):
+
+        ### Returns var name or alias treated
+
+        if use_alias_as_vars:
+            if self.alias in self.var_param(case, var_name):
+                txt = self.var_param(case, var_name)[self.alias]
+                return self.var_name_chr_clean(txt)
+            else:
+                return self.var_name_chr_clean(var_name)
+        else:
+            return self.var_name_chr_clean(var_name)
+            
+
+    def var_name_txt_out(self, case, var_name, use_alias_as_vars = False):
+
+        ### Returns var out name or alias treated
+
+        if use_alias_as_vars:
+            if self.alias in self.var_param_out(case, var_name):
+                txt = self.var_param_out(case, var_name)[self.alias]
+                return self.var_name_chr_clean(txt)
+            else:
+                return self.var_name_chr_clean(var_name)      
+        else:
+            return self.var_name_chr_clean(var_name)            
+
+    def output_plts_sensitivity(self, folder_path, case, use_alias_as_vars = False):
 
         """
 
@@ -2183,7 +2212,7 @@ class metamodel(object):
             * case: case name to be execute
 
         **Optional parameters:**
-            * None
+            * use_alias_as_vars: use alias names as variable names
 
         **Returns:**
             * Saves in the folder_path location the plots regarding the sensitivity analysis
@@ -2218,22 +2247,25 @@ class metamodel(object):
             for vary in vars_y:
 
                 # one to one plots
+                var_name_txt = self.var_name_txt(case, varx, use_alias_as_vars = use_alias_as_vars)
+                var_name_txt_out = self.var_name_txt(case, vary, use_alias_as_vars = use_alias_as_vars)
 
                 data = {}
-                data["legend"] = r"$%s$ vs. $%s$ %s" % (varx,vary,sensitivity_type)
+                data["legend"] = r"$%s$ vs. $%s$ %s" % (var_name_txt,var_name_txt_out,sensitivity_type)
                 data["output_folder"] = folder
-                data["file name"] = r"cross_%s_%s_%s" % (self.var_name_chr_clean(varx),self.var_name_chr_clean(vary),case)
-                data["xname"] = varx
+                data["file name"] = r"cross_%s_%s_%s" % (varx,vary,case)
+                data["xname"] = var_name_txt #varx
                 data["xdata"] = self.doeX(case)[varx]
-                data["yname"] = vary
+                data["yname"] = var_name_txt_out #vary
                 data["ydata"] = self.doeX(case)[vary]
                 data["format"] = "*"
-                data["ylabel"] = r"$%s$ [%s]" % (vary,self.var_param(case, vary)[self.ud])
-                data["xlabel"] = r"$%s$ [%s]" % (varx,self.var_param(case, varx)[self.ud])
+                data["ylabel"] = r"$%s [%s]$" % (var_name_txt_out,self.var_param(case, vary)[self.ud])
+                data["xlabel"] = r"$%s [%s]$" % (var_name_txt,self.var_param(case, varx)[self.ud])
 
                 self.plt.plot_scatter_sensitivity(data)
 
-        self.msg("Cross DOEX variable sampling combinations and sensitivity analisys plotted in %s" % folder)
+        #self.msg("Cross DOEX variable sampling combinations and sensitivity analisys plotted" in %s" % folder)
+        self.msg("Cross DOEX variable sampling combinations and sensitivity analisys plotted")
 
         ## histogram plot
         # new folder
@@ -2243,13 +2275,16 @@ class metamodel(object):
         vars_x = self.vars_keys(case, not_cte = True)
         lst_var_x = []
         for var_x in vars_x:
-            lst_var_x.append("$%s$" % var_x)
+            var_name_txt = self.var_name_txt(case, var_x, use_alias_as_vars = use_alias_as_vars)
+            lst_var_x.append("$%s$" % var_name_txt)
         vars_o = self.vars_out_keys(case)
         s_y = self.SiY(case)
         [vi,conf] = self.SiY_key_vals(case)
         sensitivity_type = self.sensitivity_type(case)
-
+        
         for vary in vars_o:
+
+            var_name_txt_out = self.var_name_txt_out(case, vary, use_alias_as_vars = use_alias_as_vars)            
 
             data1 = {}
             data1["legend"] = r"%s Case: %s " % (sensitivity_type, case)
@@ -2257,18 +2292,19 @@ class metamodel(object):
             data1["file name"] = r"sensi_%s_%s" % (case,vary)
             data1["xname"] = "DOEX variables"
             data1["xdata"] = lst_var_x
-            data1["yname"] = "Sensitivity index var $%s$" % vary
+            data1["yname"] = "Sensitivity index var $%s$" % var_name_txt_out
             data1["ydata"] = np.abs(s_y[vary][vi])
             data1["color"] = ""
-            data1["ylabel"] = r"Sensitivity index var $%s$ [$%s$]" % (vary,self.var_param_out(case, vary)[self.ud])
+            data1["ylabel"] = r"Sensitivity index var $%s [%s]$" % (var_name_txt_out,self.var_param_out(case, vary)[self.ud])
             data1["xlabel"] = r""
             data1["conf"] = np.abs(s_y[vary][conf])
 
             self.plt.plot_scatter_histsensi(data1)
 
-        self.msg("Sensitivity histograms plotted in %s" % folder2)
+        #self.msg("Sensitivity histograms plotted in %s" % folder2)
+        self.msg("Sensitivity histograms plotted")
 
-    def output_plts_models_XY(self, folder_path, case):
+    def output_plts_models_XY(self, folder_path, case, use_alias_as_vars = False):
 
         """
 
@@ -2283,7 +2319,7 @@ class metamodel(object):
             * case: case name to be execute
 
         **Optional parameters:**
-            * None
+            * use_alias_as_vars: use alias names as variable names
 
         **Returns:**
             * Saves in the folder_path location the plots regarding the XY plots of the DOEY variables versus DOEX variables
@@ -2313,23 +2349,27 @@ class metamodel(object):
 
             for varx in vars_x:
 
+                var_name_txt = self.var_name_txt(case, varx, use_alias_as_vars = use_alias_as_vars)
+                var_name_txt_out = self.var_name_txt_out(case, vary, use_alias_as_vars = use_alias_as_vars)        
+
                 data = {}
-                data["legend"] = r"$%s$ vs. $%s$ model" % (varx,vary)
+                data["legend"] = r"$%s$ vs. $%s$ model" % (var_name_txt,var_name_txt_out)
                 data["output_folder"] = folder
                 data["file name"] = r"XYplt_%s_%s_%s" % (case,varx,vary)
-                data["xname"] = varx
+                data["xname"] = var_name_txt
                 data["xdata"] = self.doeX(case)[varx]
-                data["yname"] = vary
+                data["yname"] = var_name_txt_out
                 data["ydata"] = self.doeY(case)[vary]
                 data["format"] = "*"
-                data["ylabel"] = r"$%s$ [%s]" % (vary,self.var_param_out(case, vary)["ud"])
-                data["xlabel"] = r"$%s$ [%s]" % (varx,self.var_param(case, varx)["ud"])
+                data["ylabel"] = r"$%s [%s]$" % (var_name_txt_out,self.var_param_out(case, vary)["ud"])
+                data["xlabel"] = r"$%s [%s]$" % (var_name_txt,self.var_param(case, varx)["ud"])
 
                 self.plt.plot_scatterXY_model(data)
 
-        self.msg("XY 2D scatter plots of the DOEY variables versus DOEX variables plotted in %s" % folder)                
+        #self.msg("XY 2D scatter plots of the DOEY variables versus DOEX variables plotted in %s" % folder)                
+        self.msg("XY 2D scatter plots of the DOEY variables versus DOEX variables plotted")                
 
-    def output_plts_models_XYZ(self, folder_path, case, default_other_vars_level = 0.5, text_annotation = True, scatter = False):
+    def output_plts_models_XYZ(self, folder_path, case, default_other_vars_level = 0.5, text_annotation = True, scatter = False, use_alias_as_vars = False):
 
         """
 
@@ -2347,6 +2387,7 @@ class metamodel(object):
             * default_other_vars_level = 0.5: range fraction for non doeX X,Y variables
             * text_annotation = True: switch on and off the text annotation regarding default_other_vars_level
             * scatter = True: show scatter plot
+            * use_alias_as_vars: use alias names as variable names
 
         **Returns:**
             * Saves in the folder_path location the plots regarding the XY plots of the DOEY variables versus DOEX variables
@@ -2383,21 +2424,25 @@ class metamodel(object):
 
                 for varxs in vars_x_sec:
 
+                    var_name_txt = self.var_name_txt(case, varx, use_alias_as_vars = use_alias_as_vars)
+                    var_name_txt_sec = self.var_name_txt(case, varxs, use_alias_as_vars = use_alias_as_vars)
+                    var_name_txt_out = self.var_name_txt_out(case, vary, use_alias_as_vars = use_alias_as_vars)                      
+
                     data = {}
                     #data["legend"] = r"$%s$ vs. $%s$ model" % (varx,vary)
                     data["legend"] = "Scatter values"
                     data["output_folder"] = folder
                     data["file name"] = r"XYZplt_%s_%s_%s_%s" % (case,vary,varx,varxs)
-                    data["xname"] = varx
+                    data["xname"] = var_name_txt #varx
                     data["xdata"] = self.doeX(case)[varx]
-                    data["yname"] = varxs
+                    data["yname"] = var_name_txt_sec #varxs
                     data["ydata"] = self.doeX(case)[varxs]
-                    data["zname"] = vary
+                    data["zname"] = var_name_txt_out #vary
                     data["zdata"] = self.doeY(case)[vary]
                     data["format"] = "*"
-                    data["xlabel"] = r"$%s$ [%s]" % (varx,self.var_param(case, varx)["ud"])
-                    data["ylabel"] = r"$%s$ [%s]" % (varxs,self.var_param(case, varxs)["ud"])
-                    data["zlabel"] = r"$%s$ [%s]" % (vary,self.var_param_out(case, vary)["ud"])
+                    data["xlabel"] = r"$%s [%s]$" % (var_name_txt,self.var_param(case, varx)["ud"])
+                    data["ylabel"] = r"$%s [%s]$" % (var_name_txt_sec,self.var_param(case, varxs)["ud"])
+                    data["zlabel"] = r"$%s [%s]$" % (var_name_txt_out,self.var_param_out(case, vary)["ud"])
                     data["color"] = "b"
                     data["marker"] = "*"
                     data["data_points_size"] = 5
@@ -2418,14 +2463,15 @@ class metamodel(object):
                                 txt += "..."
                                 break
                             else:
-                                txt += "%s=%.2E [%s]\n" % (key,doeX_other_vars_values[key],self.var_param(case, key)["ud"])
+                                txt += "%s=%.2E [$%s$]\n" % (key,doeX_other_vars_values[key],self.var_param(case, key)["ud"])
                             ii += 1
 
                         data["anotate"]=[txt,0,0.99,'xx-small'] #[txt,pos_x, pos_y, fontsize]
 
                     self.plt.plot_scatterXYZ_model(data)
 
-        self.msg("XYZ 3D scatter plots of the DOEY variables versus DOEX variables in %s" % folder)
+        #self.msg("XYZ 3D scatter plots of the DOEY variables versus DOEX variables in %s" % folder)
+        self.msg("XYZ 3D scatter plots of the DOEY variables versus DOEX variables")
 
     def metamodel_surface(self, case, varx, vary, varz, default_other_vars_level = 0.5, grid_size = 100):
 
@@ -2541,7 +2587,7 @@ class metamodel(object):
 
         return X, Y, Z
 
-    def output_plts_models_residuals_plot(self, folder_path, case):
+    def output_plts_models_residuals_plot(self, folder_path, case, use_alias_as_vars = False):
 
         """
 
@@ -2556,7 +2602,7 @@ class metamodel(object):
             * case: case name to be execute
 
         **Optional parameters:**
-            * None
+            * use_alias_as_vars: use alias names as variable names
 
         **Returns:**
             * Saves in the folder_path location the residual values, DOEY varibles predictions ploted versus DOEY variable values
@@ -2587,17 +2633,19 @@ class metamodel(object):
 
             (varY_predict, varY_values, score, varY_predict_line) = obj_metamodel.score_doeY_target(doeX_test, doeY_test, vary)
 
+            var_name_txt_out = self.var_name_txt_out(case, vary, use_alias_as_vars = use_alias_as_vars)   
+
             data = {}
-            data["legend"] = r"predicted vs. values of %s" % (vary)
+            data["legend"] = r"predicted vs. values of $%s$" % (var_name_txt_out)
             data["output_folder"] = folder
             data["file name"] = r"XYplt_residuals_%s_%s" % (case,vary)
-            data["xname"] = "Data values %s" % vary
-            data["yname"] = "Predicted values %s" % vary
+            data["xname"] = "Data values $%s$" % var_name_txt_out
+            data["yname"] = "Predicted values $%s$" % var_name_txt_out
             data["xdata"] = varY_values
             data["ydata"] = varY_predict
             data["format"] = "*"
-            data["xlabel"] = r"Data values $%s$ [%s]" % (vary, self.var_param_out(case, vary)["ud"])
-            data["ylabel"] = r"Predicted values $%s$ [%s]" % (vary, self.var_param_out(case, vary)["ud"])
+            data["xlabel"] = r"Data values $%s [%s]$" % (var_name_txt_out, self.var_param_out(case, vary)["ud"])
+            data["ylabel"] = r"Predicted values $%s [%s]$" % (var_name_txt_out, self.var_param_out(case, vary)["ud"])
 
             data["xdata2"] = varY_values
             data["ydata2"] = varY_predict_line
@@ -2606,7 +2654,8 @@ class metamodel(object):
 
             self.plt.plot_scatterXY_model(data)
 
-        self.msg("XY 2D scatter plots of the residual values in %s" % folder)
+        #self.msg("XY 2D scatter plots of the residual values in %s" % folder)
+        self.msg("XY 2D scatter plots of the residual values")
 
     #### Other functions
     #####################################

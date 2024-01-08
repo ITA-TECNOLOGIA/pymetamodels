@@ -1,26 +1,26 @@
 Msg: Case case_1 sampling value 4096 by DGSM. DOEX shape (16384, 3)
-Msg: MultiGaussianProcessRegressor R2 coefficient of determination 0.998, score 0.998. With fit intercept True selected. DOEX & DOEY shape (10649, 3) & (10649, 2).Time elapsed 359.53 [s] (total 733.19 [s])
+Msg: MultiGaussianProcessRegressor R2 coefficient of determination 0.998, score 0.998. With fit intercept True selected. DOEX & DOEY shape (10649, 3) & (10649, 2).Time elapsed 142.34 [s] (total 299.00 [s])
 Plot create ID: cross_X1_X2_case_1
 Plot create ID: cross_X1_X3_case_1
 Plot create ID: cross_X2_X3_case_1
-Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A04 kuwase_metamodel\..\_examples_raw\kursawe_model_out\cross_sampling
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted
 Plot create ID other: sensi_case_1_kursawe1
 Plot create ID other: sensi_case_1_kursawe2
-Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A04 kuwase_metamodel\..\_examples_raw\kursawe_model_out\hist_sensitivity
+Msg: Sensitivity histograms plotted
 Plot create ID: XYplt_case_1_X1_kursawe1
 Plot create ID: XYplt_case_1_X2_kursawe1
 Plot create ID: XYplt_case_1_X3_kursawe1
 Plot create ID: XYplt_case_1_X1_kursawe2
 Plot create ID: XYplt_case_1_X2_kursawe2
 Plot create ID: XYplt_case_1_X3_kursawe2
-Msg: XY 2D scatter plots of the DOEY variables versus DOEX variables plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A04 kuwase_metamodel\..\_examples_raw\kursawe_model_out\XY_model_plot
+Msg: XY 2D scatter plots of the DOEY variables versus DOEX variables plotted
 Plot create ID: XYplt_residuals_case_1_kursawe1
 Plot create ID: XYplt_residuals_case_1_kursawe2
-Msg: XY 2D scatter plots of the residual values in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A04 kuwase_metamodel\..\_examples_raw\kursawe_model_out\XY_model_plot_residuals
+Msg: XY 2D scatter plots of the residual values
 Plot create ID other: XYZplt_case_1_kursawe1_X1_X2
 Plot create ID other: XYZplt_case_1_kursawe1_X1_X3
 Plot create ID other: XYZplt_case_1_kursawe1_X2_X3
 Plot create ID other: XYZplt_case_1_kursawe2_X1_X2
 Plot create ID other: XYZplt_case_1_kursawe2_X1_X3
 Plot create ID other: XYZplt_case_1_kursawe2_X2_X3
-Msg: XYZ 3D scatter plots of the DOEY variables versus DOEX variables in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A04 kuwase_metamodel\..\_examples_raw\kursawe_model_out\XYZ_model_plot
+Msg: XYZ 3D scatter plots of the DOEY variables versus DOEX variables

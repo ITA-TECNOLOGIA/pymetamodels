@@ -254,7 +254,7 @@ class objmetamodel(object):
             if with_test:
                 _doeX_train, _doeX_test, _doeY_train, _doeY_test = sk_model_selection.train_test_split(doeX_train, doeY_train, test_size=0.35, random_state=self.f_random_state(True))
             else:
-                [_doeX_train, _doeX_test, _doeY_train, _doeY_test] = [doeX_train, None, doeY_train, None]
+                [_doeX_train, _doeX_test, _doeY_train, _doeY_test] = [doeX_train, doeX_train, doeY_train, doeY_train]
         else:
             [_doeX_train, _doeX_test, _doeY_train, _doeY_test] = [doeX_train, doeX_test, doeY_train, doeY_test]
 
@@ -2020,7 +2020,7 @@ class objmetamodel(object):
         #self.test_XD()
         #self.test_metamodel(scheme = "test")
 
-        #self.test_metamodel(scheme = "general_fast")
+        self.test_metamodel(scheme = "general_fast")
         #self.test_metamodel(scheme = "general_fast_nonpol")
         #self.test_metamodel(scheme = "spline")
         #self.test_metamodel(scheme = "polynomial")
@@ -2028,7 +2028,7 @@ class objmetamodel(object):
         #self.test_metamodel(scheme = "linear")
         #self.test_metamodel(scheme = "general")
         #self.test_metamodel(scheme = "svn")
-        self.test_metamodel(scheme = "neural")
+        #self.test_metamodel(scheme = "neural")
 
         #self.test_save_files(script_folder, scheme = "general_fast")
 
@@ -2176,6 +2176,6 @@ class objmetamodel(object):
 
 if __name__ == "__main__":
 
-    analysis = analysis()
+    analysis = objmetamodel()
 
-    analysis.run_tests()
+    analysis.run_tests("")

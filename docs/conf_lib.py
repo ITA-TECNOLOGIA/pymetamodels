@@ -3,6 +3,7 @@
 import os, sys
 import xlrd
 import shutil
+import pybtex.database as btex
 
 class conf_lib(object):
 
@@ -24,7 +25,7 @@ class conf_lib(object):
         self.build = None
         if self._is_html(): self.build = "html"
         if self._is_latex(): self.build = "latex"
-        print(sys.argv)
+        
         pass
 
     def log(self,txt):
@@ -129,10 +130,36 @@ class conf_lib(object):
         bib_dst_file = os.path.join(current_directory, bib_name_file)
 
         if os.path.isfile(bib_src_file):
-            shutil.copy(bib_src_file, bib_dst_file)
+            #shutil.copy(bib_src_file, bib_dst_file)
+            self.clean_bibliography(bib_src_file, bib_dst_file)
             return [bib_name_file]
         else:
             return []
+
+    def clean_bibliography(self, bib_src_file, bib_dst_file):
+
+        ### Cleans the fields of the bibliography
+
+        bib_data = btex.parse_file(bib_src_file, bib_format=None)
+
+        remove_fields = ["file","abstract","keywords"]
+
+        for key in bib_data.entries:
+            
+            keys_f = list(bib_data.entries[key].fields.keys())
+            #print(keys_f)
+
+            for key_f in keys_f:
+                
+                if key_f in remove_fields:
+
+                    bib_data.entries[key].fields.pop(key_f)
+
+            #print(list(bib_data.entries[key].fields.keys()))
+
+        bib_data.to_file(bib_dst_file, bib_format="bibtex")
+        
+        return bib_dst_file
 
     def parse_tables_files(self, path_xls, sheet, tables_dir, data_dir):
 
@@ -483,11 +510,30 @@ def parse_figures_files_table():
     sheet = "parse_figures_files"
     clib.parse_figures_files_table(path_xls, sheet, images_dir)
 
+def parse_bibliography():    
+
+    import conf_lib as conf_lib
+    clib = conf_lib.conf_lib() 
+
+    bibtex_bibfiles = []
+    bib_name_file = "001 DataScience.bib"
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+
+    bib_folder = os.path.join(r"C:\Users\flahuerta\Documents\Mendely_Bibtex")
+    bibtex_bibfiles += clib.add_bibligraphy_Mend(bib_name_file, bib_folder, current_directory)
+    bib_folder = os.path.join(r"C:\Users\Francisco\Documents\Mendeley_Bibtex")
+    bibtex_bibfiles += clib.add_bibligraphy_Mend(bib_name_file, bib_folder, current_directory)
+    bib_folder = os.path.join(r"C:\Users\Paquito\Documents\Mendeley_Bibtex")
+    bibtex_bibfiles += clib.add_bibligraphy_Mend(bib_name_file, bib_folder, current_directory)    
+
+    print(bibtex_bibfiles)
+
 def tests():
     #parse_table_xls_to_list_table
     #test_parse_table_xls_to_list_table()
     #parse_figures_files_table
-    parse_figures_files_table()
+    #parse_figures_files_table()
+    parse_bibliography()
 
 if __name__ == "__main__":
 

@@ -1,25 +1,25 @@
 Msg: Case case_1 sampling value 1024 by DGSM. DOEX shape (4096, 3)
-Msg: MultiGaussianProcessRegressor R2 coefficient of determination 0.998, score 0.998. With fit intercept True selected. DOEX & DOEY shape (2662, 3) & (2662, 3).Time elapsed 9.55 [s] (total 22.19 [s])
+Msg: MultiGaussianProcessRegressor R2 coefficient of determination 0.998, score 0.998. With fit intercept True selected. DOEX & DOEY shape (2662, 3) & (2662, 3).Time elapsed 2.09 [s] (total 4.95 [s])
 Msg: Start optimization scheme general_fast
-Msg: Opt method: iter_grid_method. Min: -8.4647 Time elapsed 56.89 [s]. Result: [-1.33124457 -0.94821506 -1.34277344]
-Msg: DoeY: [[-1.44999904e+01 -8.46471299e+00 -8.82340524e-06]]
-Msg: Opt method: shgo. Min: 1.1978 Time elapsed 3.48 [s]. Result: [-0.00714756 -0.01955815 -0.0130501 ]
-Msg: DoeY: [[-18.3801716    1.19777639   3.88017138]]
-Msg: Opt method: COBYLA. Min: -8.4647 Time elapsed 1.02 [s]. Result: [-1.33261258 -0.94699243 -1.34325087]
-Msg: DoeY: [[-1.44999912e+01 -8.46472779e+00 -4.57461036e-06]]
-Msg: Updated best guess with COBYLA model. Min: -8.4647. Result: [-1.33261258 -0.94699243 -1.34325087]
-Msg: Opt method: SLSQP. Min: -8.3961 Time elapsed 3.59 [s]. Result: [-1.33387171 -0.94789737 -1.31518098]
-Msg: DoeY: [[-14.53395254  -8.39606334   0.03395266]]
-Msg: Min var: ['kursawe2'].Best opt method: COBYLA. Min: -8.4647 Time elapsed 65.05 [s]. Result: [-1.33261258 -0.94699243 -1.34325087]
-Msg: DoeY: [[-1.44999912e+01 -8.46472779e+00 -4.57461036e-06]]
+Msg: Opt method: iter_grid_method. Min: -8.4646 Time elapsed 20.97 [s]. Result: [-1.32988824 -0.94835069 -1.34385851]
+Msg: DoeY: [[-1.45000325e+01 -8.46456541e+00  3.85935084e-05]]
+Msg: Opt method: shgo. Min: 1.2338 Time elapsed 0.72 [s]. Result: [-0.00011886 -0.00426139 -0.00171247]
+Msg: DoeY: [[-18.37743431   1.23376166   3.87743481]]
+Msg: Opt method: COBYLA. Min: -8.4647 Time elapsed 0.16 [s]. Result: [-1.3338604  -0.94685864 -1.3422335 ]
+Msg: DoeY: [[-1.44999919e+01 -8.46472846e+00 -3.14171902e-06]]
+Msg: Updated best guess with COBYLA model. Min: -8.4647. Result: [-1.3338604  -0.94685864 -1.3422335 ]
+Msg: Opt method: SLSQP. Min: -8.4310 Time elapsed 0.31 [s]. Result: [-1.32730801 -0.95237011 -1.32776339]
+Msg: DoeY: [[-14.51681555  -8.43102516   0.01681404]]
+Msg: Min var: ['kursawe2'].Best opt method: COBYLA. Min: -8.4647 Time elapsed 22.19 [s]. Result: [-1.3338604  -0.94685864 -1.3422335 ]
+Msg: DoeY: [[-1.44999919e+01 -8.46472846e+00 -3.14171902e-06]]
 Plot create ID: cross_X1_X2_case_1
 Plot create ID: cross_X1_X3_case_1
 Plot create ID: cross_X2_X3_case_1
-Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A06 kuwase_optimize\..\_examples_raw\kuwase_optimize_out\cross_sampling
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted
 Plot create ID other: sensi_case_1_kursawe1
 Plot create ID other: sensi_case_1_kursawe2
 Plot create ID other: sensi_case_1_cons_kursawe1
-Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A06 kuwase_optimize\..\_examples_raw\kuwase_optimize_out\hist_sensitivity
+Msg: Sensitivity histograms plotted
 Plot create ID: XYplt_case_1_X1_kursawe1
 Plot create ID: XYplt_case_1_X2_kursawe1
 Plot create ID: XYplt_case_1_X3_kursawe1
@@ -29,11 +29,11 @@ Plot create ID: XYplt_case_1_X3_kursawe2
 Plot create ID: XYplt_case_1_X1_cons_kursawe1
 Plot create ID: XYplt_case_1_X2_cons_kursawe1
 Plot create ID: XYplt_case_1_X3_cons_kursawe1
-Msg: XY 2D scatter plots of the DOEY variables versus DOEX variables plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A06 kuwase_optimize\..\_examples_raw\kuwase_optimize_out\XY_model_plot
+Msg: XY 2D scatter plots of the DOEY variables versus DOEX variables plotted
 Plot create ID: XYplt_residuals_case_1_kursawe1
 Plot create ID: XYplt_residuals_case_1_kursawe2
 Plot create ID: XYplt_residuals_case_1_cons_kursawe1
-Msg: XY 2D scatter plots of the residual values in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A06 kuwase_optimize\..\_examples_raw\kuwase_optimize_out\XY_model_plot_residuals
+Msg: XY 2D scatter plots of the residual values
 Plot create ID other: XYZplt_case_1_kursawe1_X1_X2
 Plot create ID other: XYZplt_case_1_kursawe1_X1_X3
 Plot create ID other: XYZplt_case_1_kursawe1_X2_X3
@@ -43,4 +43,4 @@ Plot create ID other: XYZplt_case_1_kursawe2_X2_X3
 Plot create ID other: XYZplt_case_1_cons_kursawe1_X1_X2
 Plot create ID other: XYZplt_case_1_cons_kursawe1_X1_X3
 Plot create ID other: XYZplt_case_1_cons_kursawe1_X2_X3
-Msg: XYZ 3D scatter plots of the DOEY variables versus DOEX variables in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A06 kuwase_optimize\..\_examples_raw\kuwase_optimize_out\XYZ_model_plot
+Msg: XYZ 3D scatter plots of the DOEY variables versus DOEX variables

@@ -2,11 +2,12 @@
 
 The **pymetamodels** changelog summary
 
-## [0.0.2]
+## [0.0.3]
 
 ### New Features:
 
-- N/A
+- Neural networks integrated
+- Plots allows to use alias as variables names. Functionality use_alias_as_vars
 
 ### Bug Fixes:
 
@@ -14,7 +15,25 @@ The **pymetamodels** changelog summary
 
 ### Documentation
 
-- First release
+- Minor changes
+
+### Development Features:
+
+- Compatible Python >= 3.7
+
+## [0.0.2]
+
+### New Features:
+
+- Distribution at [PyPI](https://pypi.org/project/pymetamodels)
+
+### Bug Fixes:
+
+- N/A
+
+### Documentation
+
+- First release at [readthedocs.io](https://pymetamodels.readthedocs.io/en/latest/)
 
 ### Development Features:
 

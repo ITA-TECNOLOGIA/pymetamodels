@@ -1,3 +1,4 @@
+#!/usr/bin/python
 
 import numpy as np
 import scipy.stats as stats
@@ -157,5 +158,5 @@ def _test_confidence_interval_log():
     
     print "Interval %.3f to %.3f normality %.4f" % (confidence_interval_normal(sample, porcentage = 0.99))
     print "Interval log %.3f to %.3f normality %.4f" % (confidence_interval_log(sample, porcentage = 0.95))
-    
+
 _test_confidence_interval_log()    

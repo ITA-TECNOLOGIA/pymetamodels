@@ -12,7 +12,7 @@
 .. glossary::
 
     RDO
-      Robust design optimization
+      robust design optimization
 
     CAE
       computer-aided engineering
@@ -27,7 +27,7 @@
       output table of variables data
 
     Model
-      Limited construction of a physical phenomena
+      limited construction of a physical phenomena
 
     CAx
       general group of computer-aided models
@@ -43,9 +43,6 @@
 
     ML
       machine learning
-
-    ROM
-      reduced order models
 
     COVs
       coefficients of variation

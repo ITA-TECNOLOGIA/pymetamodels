@@ -93,7 +93,7 @@ class objplots(object):
 
         mlpp.name_y_axis(data["ylabel"])
         mlpp.name_x_axis(data["xlabel"])
-        mlpp.x_ticks_rotate(45.)
+        mlpp.x_ticks_rotate(90.)
 
         self.mlp_end(mlp)
         del mlp

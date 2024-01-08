@@ -14,6 +14,8 @@ from matplotlib import cm
 
 import pickle
 
+from pymetamodels.clsxplots.obj_func import test_empty
+
 class _cls_3D_plot(object):
 
     def __init__(self, ID, type_plot, parent, output_folder):
@@ -50,9 +52,9 @@ class _cls_3D_plot(object):
         else:
             config["legend"] =  legend
 
-        if x != []: config["x_axis"] = np.asarray(x, dtype = float)
-        if y != []: config["y_axis"] = np.asarray(y, dtype = float)
-        if z != []: config["z_axis"] = np.asarray(z, dtype = float)
+        if test_empty(x): config["x_axis"] = np.asarray(x, dtype = float)
+        if test_empty(y): config["y_axis"] = np.asarray(y, dtype = float)
+        if test_empty(z): config["z_axis"] = np.asarray(z, dtype = float)
 
         self.series.append(config)
 
@@ -73,10 +75,10 @@ class _cls_3D_plot(object):
             config["legend"] =  "_nolegend_"
         else:
             config["legend"] =  legend
-
-        if x != []: config["x_axis"] = np.asarray(x, dtype = float)
-        if y != []: config["y_axis"] = np.asarray(y, dtype = float)
-        if z != []: config["z_axis"] = np.asarray(z, dtype = float)
+        
+        if test_empty(x): config["x_axis"] = np.asarray(x, dtype = float)
+        if test_empty(y): config["y_axis"] = np.asarray(y, dtype = float)
+        if test_empty(z): config["z_axis"] = np.asarray(z, dtype = float)
 
         self.series.append(config)
 
@@ -257,7 +259,10 @@ class _cls_3D_plot(object):
                      transform = plt.gca().transAxes)
         plt.savefig(route)
         if not self.parent._no_logo:
-            del(plt.gca().texts[-1])
+            try:
+                del(plt.gca().texts[-1])
+            except:
+                pass
         
         plt.ion()
 
@@ -289,7 +294,7 @@ class _cls_3D_plot(object):
         lefts = [(rcleft + i * (width + wspace)) for i in range(cols)]
 
         #return a list of axes instances
-        return [plt.axes([lefts[j],bottoms[i], width, height]) for i in range(rows-1,-1,-1) for j in range(cols) ]
+        return [plt.axes([lefts[j],bottoms[i], width, height], visible = False) for i in range(rows-1,-1,-1) for j in range(cols) ] ## error on Matplotlib verion >=3.8.0 visible=False
 
     def get_ax_size(self, _ax, _fig, inDPI = False):
         bbox = _ax.get_window_extent().transformed(_fig.dpi_scale_trans.inverted())

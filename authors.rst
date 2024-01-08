@@ -5,7 +5,8 @@ Authors
 
 Build in `ITAINNOVA <https://www.itainnova.es/es>`__ . Contributors:
 
-* Francisco Lahuerta Calahorra <flahuerta@itainnova.es> *(Analysis, development, documentation)*.
+* Nicolas Escribano *(Development, documentation)*
+* Francisco Lahuerta Calahorra <flahuerta@itainnova.es> *(Analysis, Analysis, development, documentation, project management)*.
 * José Manuel Bielsa *(Management)*.
 * Leticia Gracia *(Funding, provisioning and management)*.
 

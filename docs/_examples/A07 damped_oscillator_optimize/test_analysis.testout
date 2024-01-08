@@ -1,19 +1,16 @@
 Msg: Case case_1 sampling value 1024 by DGSM. DOEX shape (5120, 4)
-Msg: MMLPRegressor (alpha=0.00010) R2 coefficient of determination 0.980, score 0.980. With fit intercept True selected. DOEX & DOEY shape (3328, 4) & (3328, 4).Time elapsed 1424.94 [s] (total 3088.55 [s])
-Msg: Min var: ['min-obj'].Best opt method: iter_grid_method. Min: -0.0345 Time elapsed 16.86 [s]. Result: [4.67333333e+00 2.33333333e+01 2.86666667e-02 4.46666667e+01]
-Msg: DoeY: [[ 1.36181422  2.23242457  7.77512227 -0.03449337]]
 Plot create ID: cross_m_k_case_1
 Plot create ID: cross_m_D_case_1
 Plot create ID: cross_m_E_{kin}_case_1
 Plot create ID: cross_k_D_case_1
 Plot create ID: cross_k_E_{kin}_case_1
 Plot create ID: cross_D_E_{kin}_case_1
-Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A07 damped_oscillator_optimize\..\_examples_raw\damped_oscillator_op_out\cross_sampling
+Msg: Cross DOEX variable sampling combinations and sensitivity analisys plotted
 Plot create ID other: sensi_case_1_x_{max}
 Plot create ID other: sensi_case_1_w_{damped}
 Plot create ID other: sensi_case_1_cons-w_{damped}
 Plot create ID other: sensi_case_1_min-obj
-Msg: Sensitivity histograms plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A07 damped_oscillator_optimize\..\_examples_raw\damped_oscillator_op_out\hist_sensitivity
+Msg: Sensitivity histograms plotted
 Plot create ID: XYplt_case_1_m_x_{max}
 Plot create ID: XYplt_case_1_k_x_{max}
 Plot create ID: XYplt_case_1_D_x_{max}
@@ -30,12 +27,12 @@ Plot create ID: XYplt_case_1_m_min-obj
 Plot create ID: XYplt_case_1_k_min-obj
 Plot create ID: XYplt_case_1_D_min-obj
 Plot create ID: XYplt_case_1_E_{kin}_min-obj
-Msg: XY 2D scatter plots of the DOEY variables versus DOEX variables plotted in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A07 damped_oscillator_optimize\..\_examples_raw\damped_oscillator_op_out\XY_model_plot
+Msg: XY 2D scatter plots of the DOEY variables versus DOEX variables plotted
 Plot create ID: XYplt_residuals_case_1_x_{max}
 Plot create ID: XYplt_residuals_case_1_w_{damped}
 Plot create ID: XYplt_residuals_case_1_cons-w_{damped}
 Plot create ID: XYplt_residuals_case_1_min-obj
-Msg: XY 2D scatter plots of the residual values in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A07 damped_oscillator_optimize\..\_examples_raw\damped_oscillator_op_out\XY_model_plot_residuals
+Msg: XY 2D scatter plots of the residual values
 Plot create ID other: XYZplt_case_1_x_{max}_m_k
 Plot create ID other: XYZplt_case_1_x_{max}_m_D
 Plot create ID other: XYZplt_case_1_x_{max}_m_E_{kin}
@@ -60,4 +57,4 @@ Plot create ID other: XYZplt_case_1_min-obj_m_E_{kin}
 Plot create ID other: XYZplt_case_1_min-obj_k_D
 Plot create ID other: XYZplt_case_1_min-obj_k_E_{kin}
 Plot create ID other: XYZplt_case_1_min-obj_D_E_{kin}
-Msg: XYZ 3D scatter plots of the DOEY variables versus DOEX variables in C:\DP\OneDrive - FEDIT\002_CODE\003_pyMetaModels\pymetamodels\docs\_examples\A07 damped_oscillator_optimize\..\_examples_raw\damped_oscillator_op_out\XYZ_model_plot
+Msg: XYZ 3D scatter plots of the DOEY variables versus DOEX variables

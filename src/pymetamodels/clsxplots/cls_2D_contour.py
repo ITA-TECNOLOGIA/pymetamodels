@@ -14,6 +14,8 @@ from matplotlib import ticker
 
 import pickle
 
+from pymetamodels.clsxplots.obj_func import test_empty
+
 class _cls_2D_contour(object):
 
     def __init__(self, ID, type_plot, parent, output_folder):
@@ -44,9 +46,10 @@ class _cls_2D_contour(object):
         config["format_contour"]= format_contour
         config["format_contour_size"]= format_contour_size
 
-        if x != []: config["x_axis"] = np.asarray(x, dtype = float)
-        if y != []: config["y_axis"] = np.asarray(y, dtype = float)
-        if z != []: config["z_axis"] = np.asarray(z, dtype = float)
+        if test_empty(x): config["x_axis"] = np.asarray(x, dtype = float)
+        if test_empty(y): config["y_axis"] = np.asarray(y, dtype = float)
+        if test_empty(z): config["z_axis"] = np.asarray(z, dtype = float)
+
         if not config["max_traingle_size"]:
             config["max_traingle_size"] = max_traingle_size
         else:
@@ -237,7 +240,7 @@ class _cls_2D_contour(object):
         lefts = [(rcleft + i * (width + wspace)) for i in range(cols)]
 
         #return a list of axes instances
-        return [plt.axes([lefts[j],bottoms[i], width, height]) for i in range(rows-1,-1,-1) for j in range(cols) ]
+        return [plt.axes([lefts[j],bottoms[i], width, height], visible = False) for i in range(rows-1,-1,-1) for j in range(cols) ] ## error on Matplotlib verion >=3.8.0 visible=False
 
     def long_edges(self, x, y, triangles, radio):
         out = []
@@ -273,7 +276,10 @@ class _cls_2D_contour(object):
                      transform = plt.gca().transAxes)
         plt.savefig(route)
         if not self.parent._no_logo:
-            del(plt.gca().texts[-1])
+            try:
+                del(plt.gca().texts[-1])
+            except:
+                pass
         
         plt.ion()
 
