@@ -1,13 +1,25 @@
 # This is a comment, to show how #-prefixed lines are ignored.
 # It is possible to specify requirements as plain names.
-xlrd==2.0.1
 sphinx==7.2.6
 sphinx-rtd-theme==2.0.0
-pillow==5.4.1
+#pillow==5.4.1
 mock==1.0.1
 commonmark==0.9.1
 recommonmark==0.5.0
 myst-parser
 sphinxcontrib-bibtex
+xlrd
+#
+numpy
+scipy
+scikit-learn
+matplotlib
+SALib
+Pillow
+xlrd
+xlwt
+xlutils
+myst-parser
+pybtex
 
 

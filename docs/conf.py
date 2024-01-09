@@ -36,15 +36,21 @@ print("---------pymetamodels help build---------")
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 actual = os.path.dirname(os.path.abspath(__file__))
+print("*-1->*", actual, os.path.exists(actual))
 parent = os.path.abspath(os.path.join(actual, os.pardir))
+print("*-2->*", parent, os.path.exists(parent))
 grand_parent = os.path.abspath(os.path.join(parent, os.pardir))
+print("*-3->*", grand_parent, os.path.exists(grand_parent))
 sys.path.insert(0, parent)
 sys.path.insert(0, grand_parent)
 
-sub = os.path.abspath(os.path.join(os.path.join(parent,"src"), "pymetamodels"))
-print("*-->*", sub)
+src = os.path.abspath(os.path.join(parent,"src"))
+print("*-5->*", src, os.path.exists(src))
+sub = os.path.abspath(os.path.join(src, "pymetamodels"))
+print("*-4->*", sub, os.path.exists(sub))
+sys.path.insert(0, os.path.abspath(src))
 sys.path.insert(0, os.path.abspath(sub))
-sys.path.insert(0, os.path.abspath(os.path.join(sub, "clsplots")))
+sys.path.insert(0, os.path.abspath(os.path.join(sub, "clsxplots")))
 
 # -- Project information -----------------------------------------------------
 project = r'pymetamodels package for materials, systems and component metamodeling'
@@ -153,7 +159,7 @@ else:
         html_theme = 'alabaster_ITA'
     elif _theme == 1:
         templates_path = [r"_templates",]
-        html_theme_path = ["_templates\sphinx_rtd_theme_old", ]
+        html_theme_path = ["_templates\sphinx_rtd_theme_old",]
         html_theme = "sphinx_rtd_theme"
     elif _theme == 2:
         html_theme = "sphinx_book_theme"
