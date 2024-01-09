@@ -74,13 +74,15 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.ifconfig',
     'sphinx.ext.doctest',
-    'sphinx_rtd_theme',
     'sphinx.ext.viewcode',
     'sphinx.ext.todo',
     'sphinx.ext.autodoc',
     'myst_parser'
 ]
-
+if on_rtd:
+    pass
+else:
+    extensions += ['sphinx_rtd_theme']
 #extensions += ['rst2pdf.pdfbuilder']
 
 # -- Autodoc
@@ -124,7 +126,10 @@ source_suffix = {
 # Custom side bars
 #html_sidebars = {'**': ['localtoc.html', 'navigation.html', 'relations.html', 'sourcelink.html', 'searchbox.html']}
 # 'localtoc.html','sourcelink.html'
-html_sidebars = {'**': ['about.html', 'navigation.html', 'relations.html', 'indexes.html', 'download.html','searchbox.html']}
+if on_rtd:
+    pass
+else:
+    html_sidebars = {'**': ['about.html', 'navigation.html', 'relations.html', 'indexes.html', 'download.html','searchbox.html']}
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -138,7 +143,8 @@ exclude_patterns = []
 #
 
 if on_rtd:
-    html_theme = 'default'
+    #html_theme = "default"
+    html_theme = "sphinx_rtd_theme"
 else:
     _theme = 3
     if _theme == 0:
